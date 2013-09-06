@@ -1,7 +1,9 @@
 require 'asgit/shell'
+require 'asgit/url'
+require 'asgit/config'
+require 'asgit/services'
 
 module Asgit
-
   class << self
 
     # Check if working tree is clean
@@ -36,5 +38,4 @@ module Asgit
     end
 
   end
-
 end
