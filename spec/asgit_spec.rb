@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Asgit do
 
-  describe "#working_tree_clean?" do
+  describe "::working_tree_clean?" do
     it "is true when nothing to commit" do
       Asgit::Shell.fake_stdout "# On branch master\n" +
                                "nothing to commit, working directory clean" do
@@ -21,7 +21,7 @@ describe Asgit do
     end
   end
 
-  describe "#current_branch" do
+  describe "::current_branch" do
     it "returns master when on master" do
       Asgit::Shell.fake_stdout "refs/heads/master" do
         Asgit.current_branch.should == "master"
@@ -29,7 +29,7 @@ describe Asgit do
     end
   end
 
-  describe "#current_commit" do
+  describe "::current_commit" do
     it "returns current commit" do
       Asgit::Shell.fake_stdout "12345" do
         Asgit.current_commit.should == "12345"
@@ -37,7 +37,7 @@ describe Asgit do
     end
   end
 
-  describe "#remote_up_to_date?" do
+  describe "::remote_up_to_date?" do
     it "returns true if remote is current" do
       Asgit::Shell.fake_stderr "Everything up-to-date" do
         Asgit.remote_up_to_date?.should be_true
