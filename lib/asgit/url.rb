@@ -21,7 +21,7 @@ module Asgit
 
       def file file_path, options={}
         file_path = file_path.gsub( /^\//, '' )
-        branch    = options.fetch(:branch) { 'master' }
+        branch    = options.fetch(:branch) { Asgit.config.default_branch }
         line      = options.has_key?(:line) ? format_lines(options[:line]) : ''
 
         File.join( project, Asgit.config.service.file_uri % { file_path: file_path, branch: branch, line: line } )

@@ -1,3 +1,6 @@
+# 0.0.4
+- add a default branch option for config
+
 # 0.0.3
 - add a `configured?` boolean method to check if completely configured
 

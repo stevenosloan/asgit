@@ -2,6 +2,21 @@ require 'spec_helper'
 
 describe Asgit::Config do
 
+  describe "#default_branch" do
+    context "when no branch is set" do
+      it "returns 'master'" do
+       expect( Asgit::Config.new.default_branch ).to eq 'master'
+      end
+    end
+    context "when a branch is set" do
+      it "returns the set branch" do
+        config = Asgit::Config.new
+        config.default_branch = 'foo'
+        expect( config.default_branch ).to eq 'foo'
+      end
+    end
+  end
+
   describe "::config" do
     it "returns a config" do
       expect( Asgit.config.class ).to eq Asgit::Config
