@@ -46,9 +46,11 @@ describe Asgit::Url do
     end
 
     it "returns the correct url for a file with a line number" do
+      expect( Asgit::Url.file "/lib/tang.rb", branch: 'dev', line: "15" ).to eq "https://github.com/wu/tang/blob/dev/lib/tang.rb#L15"
     end
 
     it "returns the correct url for a file with a range of line numbers" do
+      expect( Asgit::Url.file "/lib/tang.rb", branch: 'dev', line: (15..18) ).to eq "https://github.com/wu/tang/blob/dev/lib/tang.rb#L15-L18"
     end
   end
 

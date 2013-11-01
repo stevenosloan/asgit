@@ -7,7 +7,7 @@ module Asgit
         base_structure: "%{base_url}/%{organization}/%{project}",
         commit_uri: "commit/%{commit}",
         branch_uri: "tree/%{branch}",
-        file_uri: "blob/%{branch}/%{file_path}"
+        file_uri: "blob/%{branch}/%{file_path}%{line}"
       }
     }
 
