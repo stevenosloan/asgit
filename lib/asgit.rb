@@ -1,7 +1,7 @@
-require 'asgit/shell'
-require 'asgit/url'
-require 'asgit/config'
-require 'asgit/services'
+require_relative 'asgit/shell'
+require_relative 'asgit/url'
+require_relative 'asgit/config'
+require_relative 'asgit/services'
 
 module Asgit
   class << self
