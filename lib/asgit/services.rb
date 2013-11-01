@@ -7,6 +7,11 @@ module Asgit
         base_structure: "%{base_url}/%{organization}/%{project}",
         commit_uri: "commit/%{commit}",
         branch_uri: "tree/%{branch}"
+      },
+      bitbucket: {
+        base_url: 'https://bitbucket.org',
+        base_structure: "%{base_url}/%{organization}/%{project}",
+        commit_uri: "commits/%{commit}"
       }
     }
 
