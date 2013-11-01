@@ -42,6 +42,7 @@ describe Asgit::Url do
     end
 
     it "returns the correct url for a file with a passed branch" do
+      expect( Asgit::Url.file "/lib/tang.rb", branch: 'dev' ).to eq "https://github.com/wu/tang/blob/dev/lib/tang.rb"
     end
 
     it "returns the correct url for a file with a line number" do

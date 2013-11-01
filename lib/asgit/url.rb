@@ -19,9 +19,11 @@ module Asgit
         File.join( project, Asgit.config.service.branch_uri % { branch: name } )
       end
 
-      def file file_path
-        file_path.gsub!( /^\//, '' )
-        File.join( project, Asgit.config.service.file_uri % { file_path: file_path } )
+      def file file_path, options={}
+        file_path = file_path.gsub( /^\//, '' )
+        branch    = options.fetch(:branch) { 'master' }
+
+        File.join( project, Asgit.config.service.file_uri % { file_path: file_path, branch: branch } )
       end
 
     end
