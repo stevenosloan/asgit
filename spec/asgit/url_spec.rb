@@ -32,4 +32,22 @@ describe Asgit::Url do
     end
   end
 
+  describe "::file" do
+    it "returns the correct url for a file" do
+      expect( Asgit::Url.file "lib/tang.rb" ).to eq "https://github.com/wu/tang/blob/master/lib/tang.rb"
+    end
+
+    it "adjust for fives given with a leading slash" do
+    end
+
+    it "returns the correct url for a file with a passed branch" do
+    end
+
+    it "returns the correct url for a file with a line number" do
+    end
+
+    it "returns the correct url for a file with a range of line numbers" do
+    end
+  end
+
 end

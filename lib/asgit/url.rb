@@ -19,6 +19,10 @@ module Asgit
         File.join( project, Asgit.config.service.branch_uri % { branch: name } )
       end
 
+      def file file_path
+        File.join( project, Asgit.config.service.file_uri % { file_path: file_path } )
+      end
+
     end
 
   end

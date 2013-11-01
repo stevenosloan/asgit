@@ -6,7 +6,8 @@ module Asgit
         base_url: 'https://github.com',
         base_structure: "%{base_url}/%{organization}/%{project}",
         commit_uri: "commit/%{commit}",
-        branch_uri: "tree/%{branch}"
+        branch_uri: "tree/%{branch}",
+        file_uri: "blob/master/%{file_path}"
       }
     }
 
