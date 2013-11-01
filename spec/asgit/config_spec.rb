@@ -34,4 +34,28 @@ describe Asgit::Config do
     end
   end
 
+  describe "::configured?" do
+    it "returns false if configuration hasn't been set" do
+      expect( Asgit.configured? ).to be_false
+    end
+
+    it "returns false if config is partially set" do
+      Asgit.configure do |c|
+        c.project = 'foo'
+      end
+
+      expect( Asgit.configured? ).to be_false
+    end
+
+    it "returns true if configuration has been set" do
+      Asgit.configure do |c|
+        c.project      = 'foo'
+        c.organization = 'bar'
+        c.service      = :github
+      end
+
+      expect( Asgit.configured? ).to be_true
+    end
+  end
+
 end

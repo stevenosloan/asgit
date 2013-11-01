@@ -49,3 +49,10 @@ Asgit::Url.file "lib/asgit.rb", line: '11'
 Asgit::Url.file "lib/asgit.rb", line: (11..15)
 # => "https://github.com/stevenosloan/asgit/blob/master/lib/asgit.rb#L11-L15"
 ```
+
+### Test configuration
+
+```ruby
+Asgit.configured?
+# => false if configuration isn't complete
+```

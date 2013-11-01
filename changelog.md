@@ -1,3 +1,6 @@
+# 0.0.3
+- add a `configured?` boolean method to check if completely configured
+
 # 0.0.2
 - add file link methods
 
