@@ -38,6 +38,7 @@ describe Asgit::Url do
     end
 
     it "adjust for fives given with a leading slash" do
+      expect( Asgit::Url.file "/lib/tang.rb" ).to eq "https://github.com/wu/tang/blob/master/lib/tang.rb"
     end
 
     it "returns the correct url for a file with a passed branch" do

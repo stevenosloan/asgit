@@ -20,6 +20,7 @@ module Asgit
       end
 
       def file file_path
+        file_path.gsub!( /^\//, '' )
         File.join( project, Asgit.config.service.file_uri % { file_path: file_path } )
       end
 
