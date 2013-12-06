@@ -1,6 +1,7 @@
 # 0.0.5
 - use `--short` flag for current branch (no more parsing!)
 - use `--porcelain` flag for remote_up_to_date?
+- use `--porcelain` flag in working_tree_clean?
 
 # 0.0.4
 - add a default branch option for config
