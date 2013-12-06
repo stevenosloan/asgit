@@ -51,7 +51,7 @@ describe Asgit::Config do
 
   describe "::configured?" do
     it "returns false if configuration hasn't been set" do
-      expect( Asgit.configured? ).to be_false
+      expect( Asgit.configured? ).to be_falsy
     end
 
     it "returns false if config is partially set" do
@@ -59,7 +59,7 @@ describe Asgit::Config do
         c.project = 'foo'
       end
 
-      expect( Asgit.configured? ).to be_false
+      expect( Asgit.configured? ).to be_falsy
     end
 
     it "returns true if configuration has been set" do
@@ -69,7 +69,7 @@ describe Asgit::Config do
         c.service      = :github
       end
 
-      expect( Asgit.configured? ).to be_true
+      expect( Asgit.configured? ).to be_truthy
     end
   end
 
