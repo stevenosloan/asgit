@@ -10,7 +10,7 @@ module Asgit
     # @return [Boolean] true if branch is clean
     def working_tree_clean?
       Shell.run "git status" do |output|
-        return output.include? "nothing to commit"
+        return output.empty?
       end
     end
 

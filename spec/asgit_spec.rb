@@ -4,18 +4,12 @@ describe Asgit do
 
   describe "::working_tree_clean?" do
     it "is true when nothing to commit" do
-      Asgit::Shell.fake_stdout "# On branch master\n" +
-                               "nothing to commit, working directory clean" do
+      Asgit::Shell.fake_stdout "" do
         expect( Asgit.working_tree_clean? ).to be_truthy
       end
     end
     it "is false when tree isn't clean" do
-      Asgit::Shell.fake_stdout "# On branch master\n" +
-                               "# Untracked files:\n" +
-                               "#   (use \"git add <file>...\" to include in what will be committed)\n" +
-                               "#\n" +
-                               "# foo\n" +
-                               "nothing added to commit but untracked files present (use \"git add\" to track)\n" do
+      Asgit::Shell.fake_stdout "M changelog.md\n" do
         expect( Asgit.working_tree_clean? ).to be_falsy
       end
     end
