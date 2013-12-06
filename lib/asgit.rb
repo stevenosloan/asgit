@@ -17,8 +17,8 @@ module Asgit
     # Get current git branch based on exec directory
     # @return [String] the current checked out branch
     def current_branch
-      Shell.run "git symbolic-ref HEAD" do |output|
-        return output.strip.gsub(/^refs\/heads\//, '')
+      Shell.run "git symbolic-ref HEAD --short" do |output|
+        return output
       end
     end
 

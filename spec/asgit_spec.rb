@@ -23,7 +23,7 @@ describe Asgit do
 
   describe "::current_branch" do
     it "returns master when on master" do
-      Asgit::Shell.fake_stdout "refs/heads/master" do
+      Asgit::Shell.fake_stdout "master" do
         Asgit.current_branch.should == "master"
       end
     end

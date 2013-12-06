@@ -1,3 +1,6 @@
+# 0.0.5
+- use `--short` flag for current branch (no more parsing!)
+
 # 0.0.4
 - add a default branch option for config
 
