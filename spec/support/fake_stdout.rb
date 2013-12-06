@@ -19,7 +19,7 @@ module Asgit
       def patched_run command, &block
         if @shell_out || @shell_err
           yield @shell_out if block_given?
-          [ true, @shell_out, @shell_err ]
+          [ true, @shell_out || '', @shell_err || '' ]
         else
           system_run command, &block
         end

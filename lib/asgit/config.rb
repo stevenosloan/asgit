@@ -1,13 +1,20 @@
 module Asgit
   class Config
+
+    attr_reader   :service
+    attr_writer   :default_branch
     attr_accessor :organization, :project
 
-    def service
-      @_service
+    def service= name
+      @service = Asgit::Services.send(name.to_sym)
     end
 
-    def service= name
-      @_service = Asgit::Services.send(name.to_sym)
+    def default_branch
+      @default_branch || 'master'
+    end
+
+    def required_attributes
+      [ :service, :organization, :project ]
     end
 
   end
@@ -19,6 +26,14 @@ module Asgit
 
     def config
       @_config ||= Config.new
+    end
+
+    def configured?
+      config.required_attributes.each do |attr|
+        return false unless config.send(attr)
+      end
+
+      true
     end
   end
 end
