@@ -33,8 +33,8 @@ module Asgit
     # Check if branch is in sync with remote
     # @return [Boolean]
     def remote_up_to_date?
-      status, stdout, stderr = Shell.run "git push --dry-run"
-      return status && stderr.include?( "Everything up-to-date" )
+      status, stdout, stderr = Shell.run "git push --dry-run --porcelain"
+      return status && stdout.match(/#{current_branch}\s+?\[up\sto\sdate\]/)
     end
 
   end
