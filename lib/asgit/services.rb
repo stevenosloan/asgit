@@ -7,14 +7,15 @@ module Asgit
         base_structure: "%{base_url}/%{organization}/%{project}",
         commit_uri: "commit/%{commit}",
         branch_uri: "tree/%{branch}",
-        file_uri: "blob/%{branch}/%{file_path}%{line}"
+        file_uri: "blob/%{branch}/%{file_path}%{line}",
+        file_at_commit_uri: "blob/%{commit}/%{file_path}%{line}"
       },
       bitbucket: {
         base_url: 'https://bitbucket.org',
         base_structure: "%{base_url}/%{organization}/%{project}",
-        commit_uri: "commits/%{commit}"
-        branch_uri: "XX",
-        file_uri: "XX"
+        commit_uri: "commits/%{commit}",
+        branch_uri: "branch/%{branch}",
+        file_at_commit_uri: "src/%{commit}/%{file_path}?at=%{branch}"
       }
     }
 

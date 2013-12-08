@@ -54,4 +54,10 @@ describe Asgit::Url do
     end
   end
 
+  describe "::file_at_commit" do
+    it "returns url at commit sha" do
+      expect( Asgit::Url.file_at_commit "lib/tang.rb", "commit_sha" ).to eq "https://github.com/wu/tang/blob/commit_sha/lib/tang.rb"
+    end
+  end
+
 end
