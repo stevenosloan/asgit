@@ -21,7 +21,7 @@ describe Asgit::Project do
     it "raises an ArgumentError if an out-of-scope arg is passed" do
       expect{
         described_class.new( foo: 'bar' )
-      }.to raise_error ArgumentError
+      }.to raise_error ArgumentError, 'unknown keyword: foo'
     end
   end
 
