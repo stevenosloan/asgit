@@ -1,10 +1,6 @@
 require_relative 'asgit/shell'
 require_relative 'asgit/url'
-require_relative 'asgit/config'
 require_relative 'asgit/services'
-
-
-# project structure
 require_relative 'asgit/project'
 
 module Asgit
