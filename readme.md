@@ -21,38 +21,36 @@ Asgit.remote_up_to_date?
 ### Get repo links
 
 ```ruby
-# First setup the project info
-Asgit.configure do |c|
-  c.organization = "stevenosloan"
-  c.project      = "asgit"
-  c.service      = :github
-end
+# First initialize the project with info
+repo = Asgit::Project.new(
+  service: 'github',
+  organization: 'stevenosloan',
+  project: 'asgit',
+  default_branch: 'master'
+)
 
-Asgit::Url.project
+
+repo.urls.project
 # => "https://github.com/stevenosloan/asgit"
 
-Asgit::Url.branch
-# => "https://github.com/stevenosloan/asgit/tree/master"
+repo.urls.branch 'branch_name'
+# => "https://github.com/stevenosloan/asgit/tree/branch_name"
 
-Asgit::Url.commit
-# => "https://github.com/stevenosloan/asgit/commit/1ea541b0d3ec4e89aea5c015184d36f95b73e17a"
+repo.urls.commit 'commit_sha'
+# => "https://github.com/stevenosloan/asgit/commit/commit_sha"
 
-Asgit::Url.file "lib/asgit.rb"
+repo.urls.file "lib/asgit.rb"
 # => "https://github.com/stevenosloan/asgit/blob/master/lib/asgit.rb"
 
-Asgit::Url.file "lib/asgit.rb", branch: 'dev'
+repo.urls.file "lib/asgit.rb", branch: 'dev'
 # => "https://github.com/stevenosloan/asgit/blob/dev/lib/asgit.rb"
 
-Asgit::Url.file "lib/asgit.rb", line: '11'
+repo.urls.file "lib/asgit.rb", line: '11'
 # => "https://github.com/stevenosloan/asgit/blob/master/lib/asgit.rb#L11"
 
-Asgit::Url.file "lib/asgit.rb", line: (11..15)
+repo.urls.file "lib/asgit.rb", line: (11..15)
 # => "https://github.com/stevenosloan/asgit/blob/master/lib/asgit.rb#L11-L15"
-```
 
-### Test configuration
-
-```ruby
-Asgit.configured?
-# => false if configuration isn't complete
+repo.urls.file_at_commit 'lib/asgit.rb', 'commit_sha'
+# -> "https://github.com/stevenosloan/asgit/blob/commit_sha/lib/asgit.rb"
 ```
