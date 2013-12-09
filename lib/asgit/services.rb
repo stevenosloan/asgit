@@ -34,6 +34,9 @@ module Asgit
         return self.freeze
       end
 
+      class MissingUrlStructure < StandardError
+      end
+
     end
 
   end
