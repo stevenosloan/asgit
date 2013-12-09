@@ -11,6 +11,8 @@ describe Asgit::Project do
     }
   end
 
+  let(:default_project) { described_class.new( default_details ) }
+
   describe "#initialize" do
     it "sets detail's attributes" do
       details_double = instance_double( "Asgit::Project::Details" )
@@ -32,14 +34,26 @@ describe Asgit::Project do
   end
 
   describe "#details" do
-    let(:project) { described_class.new( default_details ) }
-
     it "returns a Details instance" do
-      expect( project.details.is_a? Asgit::Project::Details ).to be_truthy
+      expect( default_project.details.is_a? Asgit::Project::Details ).to be_truthy
     end
 
     it "returns the same instance on each call" do
-      expect( project.details ).to eq project.details
+      expect( default_project.details ).to eq default_project.details
+    end
+  end
+
+  describe "#service" do
+    before :each do
+      double( "Asgit::Service" )
+    end
+    it "returns a Service instance" do
+      expect( default_project.service.is_a? Asgit::Services::Service ).to be_truthy
+    end
+    it "creates Service instance with defined service" do
+      expect( Asgit::Services ).to receive(:github)
+
+      default_project.service
     end
   end
 

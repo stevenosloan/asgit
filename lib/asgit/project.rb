@@ -15,6 +15,10 @@ module Asgit
       @_details ||= Details.new
     end
 
+    def service
+      @_service ||= Services.public_send details.service
+    end
+
     class Details
       attr_accessor :service, :organization, :project, :default_branch
     end
