@@ -44,9 +44,6 @@ describe Asgit::Project do
   end
 
   describe "#service" do
-    before :each do
-      double( "Asgit::Service" )
-    end
     it "returns a Service instance" do
       expect( default_project.service.is_a? Asgit::Services::Service ).to be_truthy
     end
@@ -54,6 +51,18 @@ describe Asgit::Project do
       expect( Asgit::Services ).to receive(:github)
 
       default_project.service
+    end
+  end
+
+  describe "#urls" do
+    it "returns a Url instance" do
+      expect( default_project.urls.is_a? Asgit::Url ).to be_truthy
+    end
+
+    it "creates Url instance with #details and #service" do
+      expect( Asgit::Url ).to receive(:new).with( default_project.details, default_project.service )
+
+      default_project.urls
     end
   end
 

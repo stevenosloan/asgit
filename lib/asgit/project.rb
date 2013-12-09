@@ -19,6 +19,10 @@ module Asgit
       @_service ||= Services.public_send details.service
     end
 
+    def urls
+      @_urls ||= Url.new details, service
+    end
+
     class Details
       attr_accessor :service, :organization, :project, :default_branch
     end
