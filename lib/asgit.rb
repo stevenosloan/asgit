@@ -9,7 +9,7 @@ module Asgit
     # Check if working tree is clean
     # @return [Boolean] true if branch is clean
     def working_tree_clean?
-      Shell.run "git status" do |output|
+      Shell.run "git status --porcelain" do |output|
         return output.empty?
       end
     end

@@ -4,6 +4,7 @@ describe Asgit do
 
   describe "::working_tree_clean?" do
     it "is true when nothing to commit" do
+      expect( Asgit::Shell ).to receive(:run).with('git status --porcelain').and_call_original
       Asgit::Shell.fake_stdout "" do
         expect( Asgit.working_tree_clean? ).to be_truthy
       end
