@@ -1,4 +1,7 @@
-# 0.0.5
+# 0.0.6
+- fix botched release using `--porcelain` flag for working_tree_clean?
+
+# 0.0.5 (yanked)
 - use `--short` flag for current branch (no more parsing!)
 - use `--porcelain` flag for remote_up_to_date?
 - use `--porcelain` flag in working_tree_clean?
