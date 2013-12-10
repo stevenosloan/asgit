@@ -1,3 +1,6 @@
+# 0.0.7
+- strip newline from `#current_branch` to return to existing behavior
+
 # 0.0.6
 - fix botched release using `--porcelain` flag for working_tree_clean?
 
