@@ -18,7 +18,8 @@ describe Asgit do
 
   describe "::current_branch" do
     it "returns master when on master" do
-      Asgit::Shell.fake_stdout "master" do
+      expect( Asgit::Shell ).to receive(:run).with('git symbolic-ref HEAD --short').and_call_original
+      Asgit::Shell.fake_stdout "master\n" do
         expect( Asgit.current_branch ).to eq "master"
       end
     end

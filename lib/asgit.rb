@@ -18,7 +18,7 @@ module Asgit
     # @return [String] the current checked out branch
     def current_branch
       Shell.run "git symbolic-ref HEAD --short" do |output|
-        return output
+        return output.strip
       end
     end
 
