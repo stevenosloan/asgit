@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Asgit::Url do
 
-  let(:service) { Asgit::Services.github.dup }
+  let(:service) { Asgit::Services.fetch(:github).new.dup }
   let(:details) do
     instance_double( "Asgit::Project::Details",
       organization: 'stevenosloan',

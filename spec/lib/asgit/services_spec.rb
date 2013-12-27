@@ -2,26 +2,50 @@ require 'spec_helper'
 
 describe Asgit::Services do
 
-  it "returns a Service for services that exist" do
-    expect( Asgit::Services.github.class ).to eq Asgit::Services::Service
+  before :all do
+    class Foo; end
   end
 
-  it "doesn't redefine a service if it is set" do
-    Asgit::Services.instance_variable_set("@_github", "foo")
-    expect( Asgit::Services.github ).to eq "foo"
-
-    # teardown, just to keep from poluting the rest of the tests
-    Asgit::Services.send(:remove_instance_variable, "@_github")
+  before :each do
+    if described_class.instance_variable_defined?(:@_registered)
+      described_class.send(:remove_instance_variable, :@_registered)
+    end
   end
 
-  describe Asgit::Services::Service do
+  after :all do
+    Asgit::Services.register( Asgit::Services::GitHub, :github )
+    Asgit::Services.register( Asgit::Services::BitBucket, :bitbucket )
+  end
 
-    let(:github) { Asgit::Services.github }
+  describe "::registered" do
+    it "returns a Hash" do
+      expect( described_class.registered ).to be_a Hash
+    end
+  end
 
-    it "returns data for each key" do
-      expect( github.base_url ).to eq "https://github.com"
+  describe "::register" do
+
+    it "adds a service to the registered" do
+      expect{ described_class.register(Foo,:foo) }.to change{ Asgit::Services.registered.keys.count }.by(1)
     end
 
+    it "adds service with provided key" do
+      described_class.register(Foo,:foo)
+      expect( described_class.registered[:foo] ).to eq Foo
+    end
+  end
+
+  describe "#fetch" do
+    it "returns a Service if that service is registered" do
+      described_class.register( Foo, :github )
+      expect( described_class.fetch(:github) ).to eq Foo
+    end
+
+    it "raises UndefinedService if service is not defined" do
+      expect{
+        described_class.fetch(:foo)
+      }.to raise_error Asgit::Services::UndefinedService
+    end
   end
 
 end

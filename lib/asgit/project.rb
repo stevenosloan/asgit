@@ -16,7 +16,7 @@ module Asgit
     end
 
     def service
-      @_service ||= Services.public_send details.service
+      @_service ||= Services.fetch( details.service ).new
     end
 
     def urls

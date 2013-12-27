@@ -44,13 +44,8 @@ describe Asgit::Project do
   end
 
   describe "#service" do
-    it "returns a Service instance" do
-      expect( default_project.service.is_a? Asgit::Services::Service ).to be_truthy
-    end
-    it "creates Service instance with defined service" do
-      expect( Asgit::Services ).to receive(:github)
-
-      default_project.service
+    it "returns a Service instance with defined service" do
+      expect( default_project.service.is_a? Asgit::Services::GitHub ).to be_truthy
     end
   end
 
