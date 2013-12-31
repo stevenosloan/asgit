@@ -1,3 +1,7 @@
+# 0.1.0
+- projects/repos are now created as instances, instead of global config -- this allows multiple per app/runtime
+- services impementation is now split to discrete classes
+
 # 0.0.7
 - strip newline from `#current_branch` to return to existing behavior
 

@@ -1,6 +1,20 @@
 "ask git"
 
-## Usage
+## Installation
+
+With Rubygems
+
+```bash
+$ gem install asgit
+```
+
+With Bundler
+
+```ruby
+gem 'asgit'
+```
+
+## Use
 
 ### Get current status
 
@@ -54,3 +68,88 @@ repo.urls.file "lib/asgit.rb", line: (11..15)
 repo.urls.file_at_commit 'lib/asgit.rb', 'commit_sha'
 # -> "https://github.com/stevenosloan/asgit/blob/commit_sha/lib/asgit.rb"
 ```
+
+
+## Services
+
+Asgit comes packaged with a few service definitions, but if you need a new one (please add a PR if you think others might as well) they're pretty straightforward to create.
+
+Lets imagine we're hosting our own [GitLab](http://gitlab.org/) application at 'example.com'. First we'll open up a new class and extend from the Asgit::Services::Service class and register it under the name of `:gitlab`.
+
+```ruby
+class GitLab < Asgit::Services::Service
+  register_as :gitlab
+
+  def base_url
+    "https://example.com"
+  end
+  # define a base_url method to act as the
+  # root for our url structures
+
+end
+```
+
+With our base class defined, we can create a new project using that class.
+
+```ruby
+repo = Asgit::Project.new(
+  service: :gitlab,
+  organization: 'stevenosloan',
+  project: 'asgit',
+  default_branch: 'master'
+)
+```
+
+This isn't very useful though, because it doesn't know the url structure for anything. So lets add those:
+
+```ruby
+class GitLab < Asgit::Services::Service
+  # ... previous code
+
+  def base_structure
+    "%{base_url}/%{organization}/%{project}"
+  end
+  # the start of every URI
+
+  def commit_uri
+    "commit/%{commit}"
+  end
+  # URI for individual commits
+
+  def branch_uri
+    "commits/%{branch}"
+  end
+  # URI for branches
+
+  def file_uri
+    "blob/%{branch}/%{file_path}"
+  end
+  # URI for an individual file
+
+end
+```
+
+You may note that we're missing a `file_at_commit_uri` structure, if we try and access a url structure that isn't defined in our custom service, a `Asgit::Services::Service::MissingUrlStructure` error will be raised.
+
+
+## Testing
+
+```bash
+$ rspec
+```
+
+
+## Contributing
+
+If there is any thing you'd like to contribute or fix, please:
+
+- Fork the repo
+- Add tests for any new functionality
+- Make your changes
+- Verify all new &existing tests pass
+- Make a pull request
+
+
+## License
+
+The Asgit gem is distributed under the MIT License.
