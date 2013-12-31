@@ -14,7 +14,7 @@ describe Asgit::Services do
 
   after :all do
     Asgit::Services.register( Asgit::Services::GitHub, :github )
-    Asgit::Services.register( Asgit::Services::BitBucket, :bitbucket )
+    Asgit::Services.register( Asgit::Services::Bitbucket, :bitbucket )
   end
 
   describe "::registered" do
