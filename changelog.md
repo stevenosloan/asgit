@@ -1,3 +1,6 @@
+# 0.1.1
+- delegate to HereOrThere::Local for shelling out
+
 # 0.1.0
 - projects/repos are now created as instances, instead of global config -- this allows multiple per app/runtime
 - services impementation is now split to discrete classes
