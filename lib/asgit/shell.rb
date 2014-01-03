@@ -5,7 +5,7 @@ module Asgit
     class << self
 
       def run command
-        HereOrThere::Local.new command
+        HereOrThere::Local.new.run command
       end
 
     end
