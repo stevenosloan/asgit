@@ -1,28 +1,13 @@
-require 'open3'
+require 'here_or_there'
 
 module Asgit
   module Shell
-
     class << self
 
-      def run command, &block
-        stdout, stderr, status = Open3.capture3(command)
-
-        if status.success?
-          yield stdout if block_given?
-          [ true, stdout, stderr ]
-        else
-          $stderr.puts "Problem running #{command}"
-          $stderr.puts stderr
-          [ false, stdout, stderr ]
-        end
-      rescue StandardError => e
-        $stderr.puts "Problem running '#{command}'"
-        $stderr.puts "#{e.message}"
-        $stderr.puts "#{e.backtrace}"
+      def run command
+        HereOrThere::Local.new command
       end
 
     end
-
   end
 end

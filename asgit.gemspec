@@ -17,4 +17,7 @@ Gem::Specification.new do |s|
   s.test_files    = Dir["spec/**/*.rb"]
   s.require_path  = "lib"
 
+  # Utility
+  s.add_dependency "here_or_there", ["~> 0.1.1"]
+
 end

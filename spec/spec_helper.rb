@@ -3,22 +3,26 @@ require 'pry-debugger'
 
 require 'asgit'
 
-require 'support/fake_stdout'
+require 'support/stubbed_shell'
 require 'support/eat_stdout'
 
+RSpec.configure do |config|
+  config.include StubbedShell
+end
+
 describe "spec_helper" do
-  describe "Asgit::Shell.fake_stdout" do
+  describe "stub_shell" do
     it "overrides the actual stdout for Asgit::Shell" do
-      Asgit::Shell.fake_stdout "woo" do
-        expect( Asgit::Shell.run("foo")[1] ).to eq "woo"
-      end
+      stub_shell 'foo', stdout: 'woo'
+      expect( Asgit::Shell.run('foo').stdout ).to eq 'woo'
     end
-  end
-  describe "Asgit::Shell.fake_stderr" do
     it "overrides the actual stderr for Asgit::Shell" do
-      Asgit::Shell.fake_stderr "woo" do
-        expect( Asgit::Shell.run("foo")[2] ).to eq "woo"
-      end
+      stub_shell 'foo', stderr: 'woo'
+      expect( Asgit::Shell.run('foo').stderr ).to eq 'woo'
+    end
+    it "overrides the actual status for Asgit::Shell" do
+      stub_shell 'foo', status: false
+      expect( Asgit::Shell.run('foo').success? ).to be_falsy
     end
   end
 end
