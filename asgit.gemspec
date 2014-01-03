@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.require_path  = "lib"
 
   # Utility
-  s.add_dependency "here_or_there", ["~> 0.1.1"]
+  s.add_dependency "here_or_there", ["~> 0.1"]
 
 end
