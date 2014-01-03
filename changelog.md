@@ -1,4 +1,8 @@
-# 0.1.1
+# 0.1.2
+- add spec for Asgit::Shell calling HereOrThere::Local
+- correctly call HereOrThere::Local from Asgit::Shell
+
+# 0.1.1 (yanked)
 - delegate to HereOrThere::Local for shelling out
 
 # 0.1.0
