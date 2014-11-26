@@ -1,3 +1,5 @@
+- add #compare method for Url, implemented for GitHub service
+
 # 0.1.2
 - add spec for Asgit::Shell calling HereOrThere::Local
 - correctly call HereOrThere::Local from Asgit::Shell

@@ -101,4 +101,13 @@ describe Asgit::Url do
     end
   end
 
+  describe "#compare" do
+    it "returns url for comparison with two commits" do
+      expect( subject.compare 'commit_sha_a', 'commit_sha_b' ).to eq 'https://github.com/stevenosloan/asgit/compare/commit_sha_a...commit_sha_b'
+    end
+    it "returns url for comparison with two branches" do
+      expect( subject.compare 'branch_a', 'branch_b' ).to eq 'https://github.com/stevenosloan/asgit/compare/branch_a...branch_b'
+    end
+  end
+
 end

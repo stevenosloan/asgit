@@ -66,7 +66,12 @@ repo.urls.file "lib/asgit.rb", line: (11..15)
 # => "https://github.com/stevenosloan/asgit/blob/master/lib/asgit.rb#L11-L15"
 
 repo.urls.file_at_commit 'lib/asgit.rb', 'commit_sha'
-# -> "https://github.com/stevenosloan/asgit/blob/commit_sha/lib/asgit.rb"
+# => "https://github.com/stevenosloan/asgit/blob/commit_sha/lib/asgit.rb"
+
+repo.urls.compare '0.1.0', 'master'
+# => "https://github.com/stevenosloan/asgit/compare/0.1.0...master"
+# github atleast is very flexible, this can take any two references,
+# could be branch, tag, or commit
 ```
 
 

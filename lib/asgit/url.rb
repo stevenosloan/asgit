@@ -39,6 +39,10 @@ module Asgit
       File.join( project, service.file_at_commit_uri % { file_path: file_path, commit: commit, line: line } )
     end
 
+    def compare ref_a, ref_b
+      File.join( project, service.compare_uri % { ref_a: ref_a, ref_b: ref_b })
+    end
+
     private
 
       def format_lines input

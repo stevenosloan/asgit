@@ -28,6 +28,10 @@ module Asgit
         "blob/%{commit}/%{file_path}%{line}"
       end
 
+      def compare_uri
+        "compare/%{ref_a}...%{ref_b}"
+      end
+
     end
   end
 end
