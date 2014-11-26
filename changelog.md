@@ -1,3 +1,4 @@
+# 0.2.0
 - add #compare method for Url, implemented for GitHub service
 
 # 0.1.2
