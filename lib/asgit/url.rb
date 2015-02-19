@@ -32,7 +32,7 @@ module Asgit
       File.join( project, service.file_uri % { file_path: file_path, branch: branch, line: line } )
     end
 
-    def file_at_commit file_path, commit=commit, options={}
+    def file_at_commit file_path, commit, options={}
       file_path = file_path.gsub( /^\//, '' )
       line      = options.has_key?(:line) ? format_lines(options[:line]) : ''
 

@@ -1,3 +1,5 @@
+- fix silly error causing a circular argument warning
+
 # 0.2.0
 - add #compare method for Url, implemented for GitHub service
 
