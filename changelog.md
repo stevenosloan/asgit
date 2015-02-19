@@ -1,3 +1,4 @@
+# 0.2.1
 - fix silly error causing a circular argument warning
 
 # 0.2.0
