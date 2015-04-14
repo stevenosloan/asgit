@@ -8,6 +8,10 @@ module Asgit
         end
       end
 
+      def initialize(details)
+        @details = details
+      end
+
       [ :base_url, :base_structure,
         :commit_uri, :branch_uri, :file_uri,
         :file_at_commit_uri, :compare_uri
