@@ -77,7 +77,48 @@ repo.urls.compare '0.1.0', 'master'
 
 ## Services
 
-Asgit comes packaged with a few service definitions, but if you need a new one (please add a PR if you think others might as well) they're pretty straightforward to create.
+### Packaged Services
+
+**[GitHub](https://github.com)**  
+```ruby
+repo = Asgit::Project.new(
+  service: 'github',
+  organization: 'stevenosloan',
+  project: 'asgit',
+  default_branch: 'master'
+)
+repo.urls.project
+# => "https://github.com/stevenosloan/asgit"
+```
+
+**[GitHub Enterprise](https://enterprise.github.com/home)**  
+To configure for GitHub Enterprise, define your project as you would for GitHub except define the `base_url` where your Enterpise app is located.
+
+```ruby
+repo = Asgit::Project.new(
+  service: 'github',
+  organization: 'stevenosloan',
+  project: 'asgit',
+  default_branch: 'master',
+  base_url: 'https://git.myserver.com'
+)
+repo.urls.project
+# => "https://git.myserver.com/stevenosloan/asgit"
+```
+
+**[BitBucket](https://bitbucket.org)**  
+```ruby
+repo = Asgit::Project.new(
+  service: 'bitbucket',
+  organization: 'stevenosloan',
+  project: 'asgit',
+  default_branch: 'master'
+)
+repo.urls.project
+# => "https://bitbucket.org/stevenosloan/asgit"
+```
+
+### Creating a custom service
 
 Lets imagine we're hosting our own [GitLab](http://gitlab.org/) application at 'example.com'. First we'll open up a new class and extend from the Asgit::Services::Service class and register it under the name of `:gitlab`.
 
