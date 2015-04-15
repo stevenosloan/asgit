@@ -24,7 +24,6 @@ describe Asgit::Services do
   end
 
   describe "::register" do
-
     it "adds a service to the registered" do
       expect{ described_class.register(Foo,:foo) }.to change{ Asgit::Services.registered.keys.count }.by(1)
     end
@@ -45,6 +44,17 @@ describe Asgit::Services do
       expect{
         described_class.fetch(:foo)
       }.to raise_error Asgit::Services::UndefinedService
+    end
+  end
+end
+
+
+describe Asgit::Services::Service do
+
+  describe "#initialize" do
+    it "sets given details to #details" do
+      details_double = instance_double("Asgit::Project::Details")
+      expect( described_class.new(details_double).details ).to eq details_double
     end
   end
 
