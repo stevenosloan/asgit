@@ -1,6 +1,8 @@
 module Asgit
   class Project
 
+    Details = Struct.new :service, :organization, :project, :default_branch, :base_url
+
     def initialize project_details={}
       project_details.each do |k,v|
         begin
@@ -21,10 +23,6 @@ module Asgit
 
     def urls
       @_urls ||= Url.new details, service
-    end
-
-    class Details
-      attr_accessor :service, :organization, :project, :default_branch, :base_url
     end
 
   end
