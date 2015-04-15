@@ -1,3 +1,5 @@
+- support setting a base_url for select services. this adds support for github enterprise (and in the future gitlab)
+
 # 0.2.1
 - fix silly error causing a circular argument warning
 
