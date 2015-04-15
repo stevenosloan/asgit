@@ -5,7 +5,7 @@ module Asgit
       register_as :github
 
       def base_url
-        @details.respond_to?(:base_url) ? @details.base_url : "https://github.com"
+        details.base_url || "https://github.com"
       end
 
       def base_structure

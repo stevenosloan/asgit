@@ -14,7 +14,8 @@ describe Asgit::Url do
     instance_double( "Asgit::Project::Details",
       organization: 'stevenosloan',
       project: 'asgit',
-      default_branch: 'master'
+      default_branch: 'master',
+      base_url: nil
     )
   end
 
