@@ -16,7 +16,7 @@ module Asgit
     end
 
     def service
-      @_service ||= Services.fetch( details.service ).new
+      @_service ||= Services.fetch( details.service ).new( details )
     end
 
     def urls
@@ -24,7 +24,7 @@ module Asgit
     end
 
     class Details
-      attr_accessor :service, :organization, :project, :default_branch
+      attr_accessor :service, :organization, :project, :default_branch, :base_url
     end
 
   end

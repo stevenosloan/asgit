@@ -7,7 +7,8 @@ describe Asgit::Project do
       service: :github,
       organization: 'stevenosloan',
       project: 'asgit',
-      default_branch: 'master'
+      default_branch: 'master',
+      base_url: "https://my.repo.url"
     }
   end
 
@@ -22,6 +23,7 @@ describe Asgit::Project do
       expect( details_double ).to receive(:organization=).with('stevenosloan')
       expect( details_double ).to receive(:project=).with('asgit')
       expect( details_double ).to receive(:default_branch=).with('master')
+      expect( details_double ).to receive(:base_url=).with('https://my.repo.url')
 
       described_class.new( default_details )
     end

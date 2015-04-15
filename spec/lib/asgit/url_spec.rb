@@ -8,8 +8,8 @@ describe Asgit::Url do
     end
   end
 
-  let(:service) { Asgit::Services.fetch(:github).new.dup }
-  let(:null_service) { Asgit::Services.fetch(:null).new.dup }
+  let(:service) { Asgit::Services.fetch(:github).new(details).dup }
+  let(:null_service) { Asgit::Services.fetch(:null).new(details).dup }
   let(:details) do
     instance_double( "Asgit::Project::Details",
       organization: 'stevenosloan',
@@ -32,6 +32,22 @@ describe Asgit::Url do
     it "returns expected url" do
       expect( subject.project ).to eq 'https://github.com/stevenosloan/asgit'
     end
+
+    context "with configured base_url" do
+      let(:details) do
+        instance_double( "Asgit::Project::Details",
+          organization: 'stevenosloan',
+          project: 'asgit',
+          default_branch: 'master',
+          base_url: "https://enterprise.github.com"
+        )
+      end
+
+      it "returns expected url" do
+        expect( subject.project ).to eq 'https://enterprise.github.com/stevenosloan/asgit'
+      end
+    end
+
     it "raises MissingUrlStructure if service doesn't implement #base_structure" do
       expect{
         null_subject.project
