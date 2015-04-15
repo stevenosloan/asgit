@@ -1,3 +1,4 @@
+- add support for fetching services as strings [#3]
 - support setting a base_url for select services. this adds support for github enterprise (and in the future gitlab)
 
 # 0.2.1

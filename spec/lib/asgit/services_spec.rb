@@ -45,6 +45,11 @@ describe Asgit::Services do
         described_class.fetch(:foo)
       }.to raise_error Asgit::Services::UndefinedService
     end
+
+    it "finds services if string given" do
+      described_class.register( Foo, :github )
+      expect( described_class.fetch('github') ).to eq Foo
+    end
   end
 end
 

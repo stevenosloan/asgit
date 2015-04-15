@@ -12,7 +12,7 @@ module Asgit
       end
 
       def fetch service
-        registered.fetch(service) do
+        registered.fetch(service.to_sym) do
           raise UndefinedService, "undefined service #{service}"
         end
       end
