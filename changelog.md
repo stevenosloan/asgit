@@ -1,3 +1,4 @@
+# 0.4.0
 - check for error/empty response when checking current branch
 
 # 0.3.0
