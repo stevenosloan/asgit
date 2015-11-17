@@ -1,5 +1,5 @@
 require 'rspec'
-require 'pry-debugger'
+require 'pry-byebug'
 
 require 'asgit'
 
