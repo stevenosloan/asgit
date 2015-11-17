@@ -9,5 +9,9 @@ module Asgit
       end
 
     end
+
+    class ResponseError < StandardError
+    end
+
   end
 end

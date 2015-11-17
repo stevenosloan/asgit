@@ -15,7 +15,12 @@ module Asgit
     # Get current git branch based on exec directory
     # @return [String] the current checked out branch
     def current_branch
-      Shell.run( "git symbolic-ref HEAD --short" ).stdout.strip
+      resp = Shell.run( "git symbolic-ref HEAD --short" )
+      if !resp.stdout.strip.empty? || resp.success?
+        return resp.stdout.strip
+      else
+        raise Shell::ResponseError, resp.stderr
+      end
     end
 
     # Get current git commit based on exec directory

@@ -18,6 +18,14 @@ describe Asgit do
       stub_shell 'git symbolic-ref HEAD --short', stdout: "master\n"
       expect( Asgit.current_branch ).to eq "master"
     end
+
+    it "raises exception on error response" do
+      stub_shell 'git symbolic-ref HEAD --short', stderr: "so much fails\n", stdout: '', status: false
+
+      expect{
+        Asgit.current_branch
+      }.to raise_error Asgit::Shell::ResponseError
+    end
   end
 
   describe "::current_commit" do
